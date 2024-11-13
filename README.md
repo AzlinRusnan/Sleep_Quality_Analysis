@@ -117,44 +117,44 @@ MLR is included all potential predictors, yielding a summary of each predictor�
 
 - Quality of Sleep and Stress Level have very high VIFs (23.75 and 19.63 respectively), indicating multicollinearity. This suggests that these predictors are highly correlated with other features.
 
-- Plan: We will remove one by one the highly correlated variables (Quality of Sleep, Stress Level, or Age) and check whether the reading is reduce.
+**Plan**: 
+
+We will remove one by one the highly correlated variables (Quality of Sleep, Stress Level, or Age) and check whether the reading is reduce.
 
 ### **Comparing VIF values by:**
 
 **1. Removing "Stress Level"**
+
+![stress](images/mlrstress.png)
     
 ![stress](images/stress.png)
 
 **Insights:**
 
-The VIF value, have improved a lot compared to before. We will now remove Quality of Sleep.
+The R2 value decreased to 87% of the variation in sleep duration. The value is still can consider high for the model. The VIF value, have improved a lot compared to before. We will now remove Quality of Sleep.
 
 **2 . Removing "Quality of Sleep"**
+
+![quality](images/mlrquality.png)
 
 ![quality](images/quality.png)
 
 **Insights:**
 
-- After removing Quality of Sleep, the VIFs have generally improved. Although a VIF below 5 indicates low multicollinearity, VIF values between 5 and 10 suggest moderate multicollinearity, which may be acceptable.
+- After removing the Quality of Sleep variable, although the R² value dropped drastically to 81%, indicating that only 81% of the variation in sleep duration is explained, the VIFs have generally improved. While a VIF below 5 indicates low multicollinearity, VIF values between 5 and 10 suggest moderate multicollinearity, which may be acceptable.
 
-- **Note:** I decided not to remove any more variables, as I’m concerned that it might limit my ability to gain insights into sleep health.
+**Note:** 
+
+I decided not to remove any more variables, as I’m concerned that it might limit the ability to gain insights into sleep health.
 
 ### 2. Best MLR Model 🦾
-Through variable selection techniques (forward selection, backward elimination, and stepwise selection), we identified an optimal subset of predictors. Stepwise selection was chosen as the preferred method, balancing model simplicity with predictive accuracy. The final selected predictors were:
-- Heart Rate
-- Physical Activity Level
-- Occupation_Engineering/IT
-- Daily Steps
-- Age
-- MAP (Mean Arterial Pressure)
-- Occupation_Healthcare
-- Occupation_Legal
-- BMI Category_Obese
-- Sleep Disorder_Sleep Apnea
-- Occupation_Sales
-  
-**Model Performance:**
 
-- R-Squared: 0.8086
-- Mean Squared Error (MSE): 0.1209
+I use **forward selection**, **backward elimination**, and **stepwise selection** to help us choose the best set of variables (predictors) for building a Multiple Linear Regression (MLR) model. The goal is to find a model that is simple, accurate, and doesn’t include unnecessary variables.
 
+Here’s why each method is used:
+
+1. **Forward Selection**: This method starts with no variables in the model and adds one variable at a time. At each step, it pick the variable that improves the model the most. This helps to avoid adding too many irrelevant variables from the start and focuses on the important ones.
+
+2. **Backward Elimination**: In this method, it start with all variables in the model and then remove the least useful one at a time. If a variable does not improve the model, it is eliminated. This helps to simplify the model by keeping only relevant variables.
+
+3. **Stepwise Selection**: This method is a mix of both forward selection and backward elimination. It starts with an empty model or a full model and both adds and removes variables at each step. It’s a good balance because it looks at all possibilities and adjusts the model to include only the best variables.
