@@ -121,9 +121,9 @@ MLR is included all potential predictors, yielding a summary of each predictorâ€
 
 We will remove one by one the highly correlated variables (Quality of Sleep, Stress Level, or Age) and check whether the reading is reduce.
 
-### **Comparing VIF values by:**
+### **Refining the Model by Checking and Comparing VIF Values:**
 
-**1. Removing "Stress Level"**
+**1. Removing "Stress Level" due to high multicollinearity."**
 
 ![stress](images/mlrstress.png)
     
@@ -133,7 +133,7 @@ We will remove one by one the highly correlated variables (Quality of Sleep, Str
 
 The R2 value decreased to 87% of the variation in sleep duration. The value is still can consider high for the model. The VIF value, have improved a lot compared to before. We will now remove Quality of Sleep.
 
-**2 . Removing "Quality of Sleep"**
+**2 .Removing "Quality of Sleep" to further reduce multicollinearity"**
 
 ![quality](images/mlrquality.png)
 
